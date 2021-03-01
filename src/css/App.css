@@ -1,0 +1,169 @@
+.App-page-1 {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 25px;
+  color: white;
+}
+
+/* Homepage Styling*/
+.App-page {
+  height: auto;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.vcom1 {
+  background-color: #000000;
+  width: 100%;
+  height: 65vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  top: 0;
+  position: relative;
+}
+
+.vcom1 .dropdown-menu {
+  border-radius: 20px;
+  position: absolute;
+  background-color: white;
+  width: 380px;
+  top: 70px;
+}
+
+.vcom1 .dropdown-menu .select-destination:hover {
+  color: #de78a9;
+  cursor: pointer;
+}
+
+.vcom1 .picture {
+  min-height: 45vh;
+  width: 65%;
+  background: url(../images/main-picture.jpeg) no-repeat center bottom;
+  margin-top: 10px;
+}
+
+.vcom1 h2 {
+  color: white;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  bottom: 10px;
+  position: absolute;
+}
+
+.vcom2 {
+  background-color: #ffffff;
+  width: 65%;
+  min-height: 35vh;
+  padding-top: 30px;
+}
+
+.vcom2 .first {
+  padding-left: 40px;
+}
+
+.vcom2 .second {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.vcom2 .second .p1 {
+  width: 250px;
+  height: 250px;
+  background: url(../images/homepage_2/1.jpeg) no-repeat center bottom;
+  background-size: 250px 250px;
+  border-radius: 20px;
+}
+
+.vcom2 .second .p2 {
+  width: 250px;
+  height: 250px;
+  background: url(../images/homepage_2/2.jpeg) no-repeat center bottom;
+  background-size: 250px 250px;
+  border-radius: 20px;
+}
+
+.vcom2 .second .p3 {
+  width: 250px;
+  height: 250px;
+  background: url(../images/homepage_2/3.jpeg) no-repeat center bottom;
+  background-size: 250px 250px;
+  border-radius: 20px;
+}
+
+.vcom2 .second .p4 {
+  width: 250px;
+  height: 250px;
+  background: url(../images/homepage_2/4.jpeg) no-repeat center bottom;
+  background-size: 250px 250px;
+  border-radius: 20px;
+}
+
+.vcom3 {
+  background-color: #ffffff;
+  width: 100%;
+  min-height: 55vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.appBar {
+  text-transform: none;
+  text-decoration: none;
+  color: #de78a9;
+}
+/*# sourceMappingURL=App.css.map */
