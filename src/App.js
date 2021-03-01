@@ -7,6 +7,7 @@ import './css/App.css';
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
 import HomePage from './visual/HomePage';
+import SearchPage from './visual/SearchPage';
 // import Authorization from './authentication/Authorization';
 // import Unauthorization from './authentication/Unauthorization';
 
@@ -65,6 +66,9 @@ const App = () => {
           </Route>
           <Route exact path='/signup'>
             <Signup setUser={setUser} setLoggedIn={setLoggedIn}/>
+          </Route>
+          <Route exact path='/search'>
+            <SearchPage />
           </Route>
         </Switch>
       </Router>
