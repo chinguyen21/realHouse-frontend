@@ -7,30 +7,28 @@ import './css/App.css';
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
 import HomePage from './visual/HomePage';
-import SearchPage from './visual/SearchPage';
-// import Authorization from './authentication/Authorization';
-// import Unauthorization from './authentication/Unauthorization';
+import SearchPage from './search_page/SearchPage';
 
 const App = () => {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(localStorage.token ? true : false)
+  const [searchPlace, setSearchPlace] = useState({})
 
-  // const handleLogout = () => {
-  //   localStorage.clear();
-  //   setUser({});
-  //   setLoggedIn(false);
-  //   <Redirect to="/"/>
-  // }
+  const handleLogout = () => {
+    localStorage.clear();
+    setUser({});
+    setLoggedIn(false);
+    <Redirect to="/"/>
+  }
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/api/v1/find", {
-  //     method: "POST",
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify({token: localStorage.token})
-  //   })
-  //   .then(res => res.json())
-  //   .then(setUser)
-  // },[])
+  useEffect(() => {
+    fetch("http://localhost:3000/api/v1/finduser", {
+      headers: {"Content-Type": "application/json"}})
+    .then(res => res.json())
+    .then(response => {
+      if (response.id) setUser(response)
+    })
+  },[])
 
   return (
     <div className={styling().root}>
@@ -48,18 +46,19 @@ const App = () => {
           </AppBar>
         :
           <AppBar position="static">
-            <Toolbar style={{background: "#1f1e1d"}}>
+            <Toolbar style={{background: "#f2e9e1"}}>
               <Typography variant="h6" className={styling().title} >
                 <Button><Link to= "/" className="appBar">Home</Link></Button>
               </Typography>
-              <Button className="appBar">Log Out</Button>
+              <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
+              <Button className="appBar" onClick={handleLogout}>Log Out</Button>
               <Avatar>{user.name!==undefined ? user.name.slice(0,1) : null}</Avatar>
             </Toolbar>
           </AppBar>
           }
         <Switch>
           <Route exact path='/'>
-            <HomePage loggedIn={loggedIn}/>
+            <HomePage loggedIn={loggedIn} setSearchPlace={setSearchPlace}/>
           </Route>
           <Route exact path='/login'>
             <Login setUser={setUser} setLoggedIn={setLoggedIn}/>
@@ -67,8 +66,8 @@ const App = () => {
           <Route exact path='/signup'>
             <Signup setUser={setUser} setLoggedIn={setLoggedIn}/>
           </Route>
-          <Route exact path='/search'>
-            <SearchPage />
+          <Route exact path='/search-page'>
+            <SearchPage searchPlace={searchPlace}/>
           </Route>
         </Switch>
       </Router>

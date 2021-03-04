@@ -3,10 +3,10 @@ import FirstCom from './FirstCom'
 import SecondCom from './SecondCom'
 import ThirdCom from './ThirdCom'
 
-const HomePage = () => {
+const HomePage = ({setSearchPlace}) => {
   return (
     <div className="App-page">
-      <FirstCom/>
+      <FirstCom setSearchPlace={setSearchPlace}/>
       <SecondCom/>
       <ThirdCom/>
     </div>

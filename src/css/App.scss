@@ -10,7 +10,7 @@
   color: white;
 }
 
-
+/* --------------------------------------*/
 /* Homepage Styling*/
 .App-page {
   height: auto;
@@ -88,7 +88,7 @@
       height: 250px;
       background: url(../images/homepage_2/1.jpeg) no-repeat center bottom; 
       background-size:  250px 250px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     .p2 {
@@ -96,7 +96,7 @@
       height: 250px;
       background: url(../images/homepage_2/2.jpeg) no-repeat center bottom; 
       background-size:  250px 250px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     .p3 {
@@ -104,7 +104,7 @@
       height: 250px;
       background: url(../images/homepage_2/3.jpeg) no-repeat center bottom; 
       background-size:  250px 250px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
     
     .p4 {
@@ -112,7 +112,7 @@
       height: 250px;
       background: url(../images/homepage_2/4.jpeg) no-repeat center bottom; 
       background-size:  250px 250px;
-      border-radius: 20px;
+      border-radius: 15px;
     }
   }
 }
@@ -135,4 +135,81 @@
   color: #de78a9;
 }
 
+/* --------------------------------------*/
+/* 
+ Signup-Login
+*/
 
+.error {
+  color:red;
+  text-align: center;
+  font-size: 20px;
+  font-family:fantasy;
+}
+
+.submit {
+  text-align:center;
+}
+/* --------------------------------------*/
+/* 
+ SearchBar
+*/
+
+.searchbar {
+  height: 80px;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+
+  .bar {
+    grid-column: 1 / span 2 ;
+    margin: auto;
+  }
+
+  .switch-button {
+    grid-column: 4;
+    margin-left: 350px; 
+  }
+}
+
+.content {
+  min-height: 82vh;
+  width: 100%;
+  display: flex;
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
+
+  .houses-container {
+    min-width: 60%;
+    grid-column: 1 / span 3 ;
+  }
+
+  .map {
+    // margin-right: 0px;
+    min-width: 40%;
+    grid-column: 4 / span 2 ;
+    background-color: black;
+  }
+
+
+}
+
+/* --------------------------------------*/
+
+/* 
+  Property Container
+*/
+
+.houses-container {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+
+  .property-box {
+    width: 300px;
+    height: 400px;
+    padding: 10px;
+    // margin: 10px 10px
+  }
+}
