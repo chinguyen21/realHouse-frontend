@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Redirect, useHistory} from "react-router-dom"
+import {useHistory} from "react-router-dom"
 import {Button, TextField} from "@material-ui/core"
 import Styling from '../css/Styling'
 

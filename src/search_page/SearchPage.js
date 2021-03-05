@@ -3,19 +3,19 @@ import SearchBar from './SearchBar';
 import Map from './Map';
 import Property from './Property.js';
 
-const SearchPage = ({searchPlace}) => {
+const SearchPage = ({user, setUser, searchPlace, properties}) => {
   const [displayMap, setDisplayMap] = useState(false)
-  const [properties, setProperties] = useState([])
 
-  useEffect (() => {
-    fetch("http://localhost:3000/properties", {
-      method: "GET",
-      headers: {"Authorization": `Bearer ${localStorage.token}`}})
-    .then(res => res.json())
-    .then(response => {
-      setProperties(response)
-    })
-  },[])
+  
+
+
+  const handleSetProperties = (property) => {
+    setUser({...user, saved_properties: [...user.saved_properties, property]})
+  }
+
+  const filterProperties = () => {
+
+  }
 
   return (
     <div>
@@ -24,7 +24,7 @@ const SearchPage = ({searchPlace}) => {
       </div>
       <div className="content">
         <div className="houses-container">
-          {properties.map((property,idx) => <Property key={idx} property={property} />)}
+          {properties.map((property,idx) => <div><Property key={idx} handleSetProperties={handleSetProperties} property={property}/></div>)}
         </div>
         
         {displayMap ? 
