@@ -1,5 +1,5 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom'
+import {useHistory, Link} from 'react-router-dom'
 
 const Property = ({property, handleSetProperties}) => {
   let history = useHistory();
@@ -28,7 +28,7 @@ const Property = ({property, handleSetProperties}) => {
 
   return (
     <div className="property-box">
-      <img src = {property.photos[0].src} width="350px" height="240px"></img>
+      <Link to={`/properties/${property.id}`}><img src = {property.photos[0].src} width="100%" height="70%"></img></Link>
       <div className="property-info-1">
         <p>Beds: {property.bedrooms[0]}-{property.bedrooms[2]}</p>
         <p>Baths: {property.bathrooms[0]}-{property.bathrooms[2]}</p>
@@ -40,7 +40,7 @@ const Property = ({property, handleSetProperties}) => {
         {history.location.pathname === "/profile" ? <button onClick= {() => handleRemove(property.id)} className="heart">Unsaved</button>  : <div onClick={handleSave} className="heart">❤️</div> }
         <div className="address">{property.full_address}</div>
         <div className="state">{property.city}, {property.state_code}</div>
-        <div className="price">PRICE: {property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}</div>
+        <div className="price">${property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}/month</div>
         <div className="contact">{property.owner_contact}</div>
       </div>
     </div>

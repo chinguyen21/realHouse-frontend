@@ -208,7 +208,8 @@
 .searchbar .switch-button {
   -ms-grid-column: 4;
   grid-column: 4;
-  margin-left: 350px;
+  -ms-grid-column-align: end;
+      justify-self: end;
 }
 
 .content {
@@ -222,19 +223,19 @@
 }
 
 .content .houses-container {
-  min-width: 60%;
+  width: 60%;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
   grid-column: 1 / span 3;
 }
 
 .content .map {
-  min-width: 40%;
-  height: 82vh;
+  width: 40%;
+  height: 60vh;
   -ms-grid-column: 4;
   -ms-grid-column-span: 2;
   grid-column: 4 / span 2;
-  background-color: black;
+  padding-right: 20px;
 }
 
 /* --------------------------------------*/
@@ -242,7 +243,6 @@
   Property Container
 */
 .houses-container {
-  width: 60%;
   margin: auto;
   display: -ms-grid;
   display: grid;
@@ -293,6 +293,11 @@
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+.houses-container .property-info-2 .heart:hover {
+  color: #de78a9;
+  cursor: pointer;
 }
 
 .houses-container .property-info-2 .address {
@@ -422,5 +427,122 @@
   -ms-grid-row: 1;
   -ms-grid-row-span: 4;
   grid-row: 1 / span 4;
+}
+
+/* 
+  Property Show
+*/
+.property-show {
+  width: 35%;
+  margin: auto;
+  padding-top: 30px;
+}
+
+.property-show .property-show-1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[5];
+      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  min-height: 60px;
+  font-size: 20px;
+  justify-items: center;
+  margin: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.property-show .property-show-1 .heart {
+  -ms-grid-column: 3;
+  grid-column: 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.property-show .property-show-1 .heart:hover {
+  color: #de78a9;
+  cursor: pointer;
+}
+
+.property-show .property-show-1 .address {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / span 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  margin-left: 25px;
+}
+
+.property-show .property-show-1 .price {
+  color: #de78a9;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 2;
+  grid-column: 4 / span 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin-right: 10px;
+}
+
+.property-show .property-show-1 .contact {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 2;
+  grid-column: 4 / span 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin-right: 10px;
+}
+
+.property-show .overview {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  min-height: 60px;
+  font-size: 20px;
+  margin: auto;
+  padding-top: 20px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 30px;
+}
+
+.features {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.features p {
+  font-size: 10px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #de78a9;
+  margin-left: 14px;
 }
 /*# sourceMappingURL=App.css.map */

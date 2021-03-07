@@ -1,49 +1,43 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, Marker } from '@react-google-maps/api';
 
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '39%',
+  height: '80%',
+  position: 'absolute',
+  
 };
-
-const center = {
-  lat: 42.32067,
-  lng: -71.05566
-};
-
-
-const position = {
-  lat: 42.32067,
-  lng: -71.05566
-}
 
 const onLoad = marker => {
   console.log('marker: ', marker)
 }
 
+const Map = ({searchPlace, firstProperty}) => {
 
-const Map = () => {
+  let center = searchPlace.lat ? {lat: searchPlace.lat, lng: searchPlace.lng} : 
+              {lat: firstProperty.latitude, lng: firstProperty.longitude}
+
   return (
-    <div className="App">
-      <header className="App-header">
-{
-       <LoadScript
-        googleMapsApiKey={process.env.REACT_APP_GOOGLEMAP_TOKEN}
-      >
-        <GoogleMap
+    <div>
+
+        {<GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={10} 
+          zoom={11} 
         >
           { /* Child components, such as markers, info windows, etc. */ }   
-    <Marker
-      onLoad={onLoad}
-      position={position}
-    />
-        </GoogleMap>
-      </LoadScript>}
-      </header>
+          <Marker
+            onLoad={onLoad}
+            position={center}
+          >
+            {/* <InfoWindow >
+              <span>Chi Nguyen</span>
+            </InfoWindow> */}
+            
+          </Marker>
+        </GoogleMap>}
+
     </div>
   );
 }

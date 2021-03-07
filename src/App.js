@@ -9,6 +9,7 @@ import Signup from './authentication/Signup';
 import HomePage from './visual/HomePage';
 import SearchPage from './search_page/SearchPage';
 import Profile from './authentication/Profile';
+import PropertyShow from './property/PropertyShow';
 
 const App = () => {
   // let history = useHistory();
@@ -45,6 +46,7 @@ const App = () => {
   },[])
 
   console.log(user)
+  // console.log(properties)
 
   return (
     <div className={styling().root}>
@@ -56,6 +58,7 @@ const App = () => {
               <Typography variant="h6" className={styling().title} >
                 <Button><Link to= "/" className="appBar">Home</Link></Button>
               </Typography>
+              <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
               <Button><Link to= "/login" className="appBar">Log In</Link></Button>
               <Button><Link to= "/signup" className="appBar">Sign Up</Link></Button>
             </Toolbar>
@@ -84,6 +87,9 @@ const App = () => {
           </Route>
           <Route exact path='/search-page'>
             <SearchPage properties={properties} user={user} setUser={setUser} searchPlace={searchPlace}/>
+          </Route>
+          <Route exact path='/properties/:propertyId'>
+            <PropertyShow properties={properties} user={user} setUser={setUser}/>
           </Route>
           <Route exact path='/profile'>
             {loggedIn ? <Profile user={user} setUser={setUser}/> : <Redirect to="/"/>}

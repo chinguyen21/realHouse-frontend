@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Button, TextField } from '@material-ui/core';
-import Property from '../search_page/Property'
+import Property from '../property/Property'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
