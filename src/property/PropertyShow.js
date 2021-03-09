@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import HouseIcon from '@material-ui/icons/House';
 import GavelIcon from '@material-ui/icons/Gavel';
-import { Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import { Table, TableHead, TableRow, TableCell, TableBody} from '@material-ui/core';
+import {GridList, GridListTile, GridListTileBar, IconButton } from '@material-ui/core';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Styling from '../css/Styling'
 
 const PropertyShow = ({properties, user}) => {
+  const [fav, setFav] = useState("white")
 
   let match = useRouteMatch();
   let property = properties.find(property => property.id === parseInt(match.params.propertyId))
@@ -14,15 +18,53 @@ const PropertyShow = ({properties, user}) => {
       font:"20px"
     }
 
+  const icon = {
+      color: fav
+  }
+
+const handleFav = () => {
+  if (fav === "white") {
+    setFav("red")
+  } else setFav("white")
+}
+
+
   return(
     <div>
       {property ? 
       <div className="property-show">
-        <div className="property-show-photos"><img src = {property.photos[0].src} width="100%" height="50%"></img></div>
+
+         <GridList cellHeight={500} spacing={15} cols={1} className={Styling().gridList}>
+            {property.photos.map((photo) => (
+              <GridListTile key={photo.StarBorderIcon}>
+                <img src={photo.src} width="100%" height="100%" alt="" />
+                <GridListTileBar
+                  titlePosition="top"
+                  actionIcon={
+                    <IconButton onClick={handleFav} style={{color: fav}}>
+                      <FavoriteIcon />
+                    </IconButton>
+                  }
+                  actionPosition="left"
+                  className={Styling().titleBar1}
+                />
+                <GridListTileBar 
+                  titlePosition="bottom"
+                  actionIcon={
+                    <IconButton onClick={handleFav} className={Styling().iconPrice}>
+                      ${property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}/month
+                    </IconButton>
+                  }
+                  actionPosition="left"
+                  className={Styling().titleBar2}
+                />
+              </GridListTile>
+            ))}
+          </GridList>
+        {/* <div className="property-show-photos"><img src = {property.photos[0].src} width="100%" height="50%"></img></div> */}
 
        <div className="property-show-1">
             <div className="address">Address: {property.full_address}, {property.city}, {property.state_code}</div>
-            <div className="price">${property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}/month</div>
             <div className="contact">{property.owner_contact}</div>
           </div>
 
@@ -75,12 +117,12 @@ const PropertyShow = ({properties, user}) => {
             <div><img src="https://img.icons8.com/ultraviolet/48/000000/heating-room.png"/><p>Heating</p></div>
             <div><img src="https://img.icons8.com/nolan/48/washing-machine.png"/><p>Washer</p></div>
             <div><img src="https://img.icons8.com/ultraviolet/48/000000/elevator.png"/><p>Elevator</p></div>
-            <div><img src="https://img.icons8.com/nolan/48/parking.png"/><p>Parking Lot</p></div>
+            <div><img src="https://img.icons8.com/nolan/48/parking.png"/><p>Parking</p></div>
             <div><img src="https://img.icons8.com/color/48/000000/strength.png"/><p>Fitness Center</p></div>
             <div><img src="https://img.icons8.com/nolan/48/dishwasher.png"/><p>Dishwasher</p></div>
-            <div><img src="https://img.icons8.com/cute-clipart/48/000000/wheelchair.png"/><p>Wheelchair accessibility</p></div>
-            <div><img src="https://img.icons8.com/nolan/48/wallmount-camera.png"/><p>Security camera</p></div>
-            <div><img src="https://img.icons8.com/nolan/48/keyhole-shield.png"/><p>Digital Lock</p></div>
+            <div><img src="https://img.icons8.com/cute-clipart/48/000000/wheelchair.png"/><p >Wheelchair accessibility</p></div>
+            <div><img src="https://img.icons8.com/nolan/48/wallmount-camera.png"/><p>Camera</p></div>
+            <div><img src="https://img.icons8.com/nolan/48/keyhole-shield.png"/><p>Pwd Lock</p></div>
             <div><img src="https://img.icons8.com/nolan/48/cat.png"/><p>Cat</p></div>
             <div><img src="https://img.icons8.com/nolan/48/dog.png"/><p>Dog</p></div>
           </div>

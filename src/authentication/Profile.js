@@ -8,9 +8,9 @@ import PhoneIcon from '@material-ui/icons/Phone';
 const Profile = ({user, setUser}) => {
   const [showEditForm, setShowEditForm] = useState(false)
 
-  const handleSetProperties = (deleteProperty) => {
-      setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== deleteProperty.id)})
-  }
+  // const handleSetProperties = (deleteProperty) => {
+  //     setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== deleteProperty.id)})
+  // }
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -104,7 +104,7 @@ const Profile = ({user, setUser}) => {
 
       <h2 style={{textAlign: 'center'}}>SAVED PROPERTIES</h2>
       <div className="houses-container">
-           {user.saved_properties ? user.saved_properties.map((property,idx) => <Property key={idx} handleSetProperties={handleSetProperties} property={property}/>) : null} 
+           {user.saved_properties ? user.saved_properties.map((property,idx) => <Property key={idx} user={user} setUser={setUser} property={property}/>) : null} 
       </div>
     </div>
   )
