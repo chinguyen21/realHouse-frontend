@@ -13,11 +13,6 @@ import useOnclickOutside from "react-cool-onclickoutside";
 
 
 const FirstCom = ({setSearchPlace}) => {
-  // const [searchPlace, setSearchPlace] = useState("")
-
-  // const handleChange = () => {
-  //   <Route exact path={match.url} render={() => <h3>Choose a movie from the list above</h3>}/>
-  // }
 
   let history = useHistory();
   
@@ -32,10 +27,6 @@ const FirstCom = ({setSearchPlace}) => {
       /* Define search scope here */
     },
     debounce: 300,
-  });
-
-  const ref = useOnclickOutside(() => {
-    clearSuggestions();
   });
 
   const handleInput = (e) => {
@@ -62,7 +53,7 @@ const FirstCom = ({setSearchPlace}) => {
       });
 
     setTimeout(function() {
-      history.push("/search-page");
+      history.push(`/search-page`);
     }, 1000);
   };
 

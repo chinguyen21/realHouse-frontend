@@ -8,10 +8,6 @@ import PhoneIcon from '@material-ui/icons/Phone';
 const Profile = ({user, setUser}) => {
   const [showEditForm, setShowEditForm] = useState(false)
 
-  // const handleSetProperties = (deleteProperty) => {
-  //     setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== deleteProperty.id)})
-  // }
-
   const handleEdit = (e) => {
     e.preventDefault();
     let editUser = {
@@ -31,16 +27,6 @@ const Profile = ({user, setUser}) => {
       setShowEditForm(false)
     })
   }
-
-  //   useEffect(() => {
-  //   fetch(`http://localhost:3000/savedproperties`, {
-  //   headers: {"Authorization": `Bearer ${localStorage.token}`}})
-  //   .then(res => res.json())
-  //   .then(saved_properties => {
-  //     // debugger
-  //     if (!saved_properties.message) setSavedProperties(saved_properties)
-  //   })
-  // },[])
 
   return(
     <div>
@@ -68,7 +54,7 @@ const Profile = ({user, setUser}) => {
               variant="filled"
               color="secondary"
               type="text"
-              placeholder="Dwayne Johnson"
+              placeholder={user.name}
               />
             <br/>
             <TextField
@@ -77,7 +63,7 @@ const Profile = ({user, setUser}) => {
               variant="filled"
               color="secondary"
               type="email"
-              placeholder="email@email.com"
+              placeholder={user.email}
             />
               <br/>
             <TextField
@@ -86,7 +72,7 @@ const Profile = ({user, setUser}) => {
               variant="filled"
               color="secondary"
               type="number"
-              placeholder="8579999999"
+              placeholder={user.phone_number}
             />
             
             <br/>
@@ -102,11 +88,13 @@ const Profile = ({user, setUser}) => {
         </div>
       </div>
 
-      <h2 style={{textAlign: 'center'}}>SAVED PROPERTIES</h2>
-      <div className="houses-container">
-           {user.saved_properties ? user.saved_properties.map((property,idx) => <Property key={idx} user={user} setUser={setUser} property={property}/>) : null} 
+        <h2 style={{textAlign: 'center'}}>SAVED PROPERTIES</h2>
+      
+        <div className="houses-container-profile">
+            {user.saved_properties ? user.saved_properties.map((property,idx) => <Property key={idx} user={user} setUser={setUser} property={property}/>) : null} 
+        </div>
       </div>
-    </div>
+
   )
 }
 

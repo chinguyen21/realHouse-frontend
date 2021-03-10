@@ -42,9 +42,9 @@ const Signup = ({setUser, setLoggedIn}) => {
     <div>
        <header className="App-page-1">
         <div className="error">{errors ? errors.map(error => <p>{error}</p>) : null}</div>
-        <div className="auth">SIGN UP</div>
+        <div className="text-header">SIGN UP</div>
         
-      <form className={Styling().authForm} onSubmit={handleSubmit}>
+      <form className="login-form" onSubmit={handleSubmit}>
         <TextField
           id="email"
           label="Email"

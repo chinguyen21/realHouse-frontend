@@ -1,19 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
-const Property = ({user, setUser, property}) => {
-  console.log(user.saved_properties.map(d => d.id))
-  console.log(property.id)
-  console.log(user.saved_properties.map(d => d.id).includes(property.id))
-  // debugger
-  const [fav, setFav] = useState(user.saved_properties.some(sP => sP.id === property.id) ? "red" : "#dcdee6")
-  
-  console.log(fav)
+const Property = ({user, setUser, property, setAskLogin}) => {
+
   const handleSave = () => {
-      // fav === "#dcdee6" ? setFav("red") : setFav("#dcdee6")
-      if (fav === "#dcdee6") {
-        setFav("red")
+
         fetch(`http://localhost:3000/fproperties`, {
         method: "POST",
         headers: {"Content-Type": "application/json",
@@ -23,8 +15,9 @@ const Property = ({user, setUser, property}) => {
         .then(() => {
           setUser({...user, saved_properties: [...user.saved_properties, property]})
         })
-        } else {
-          setFav("#dcdee6")
+      }
+
+    const handleRemove = () => {
            fetch(`http://localhost:3000/fproperties/${property.id}`, {
             method: "DELETE",
             headers: {"Content-Type": "application/json"}})
@@ -32,8 +25,7 @@ const Property = ({user, setUser, property}) => {
           .then(() => {
             setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== property.id)})
           })
-        }
-  }
+      }
 
   return (
     <div className="property-box">
@@ -48,7 +40,15 @@ const Property = ({user, setUser, property}) => {
       </div>
 
       <div className="property-info-2">
-        <div onClick={handleSave} className="heart" style={{color: fav}}><FavoriteIcon/></div>
+        {!user.saved_properties ? 
+          <div onClick={() => setAskLogin(true)} className="heart" style={{color: "#dcdee6"}}><FavoriteIcon/></div>
+        :
+        user.saved_properties.some(sP => sP.id === property.id) ? 
+        <div onClick={handleRemove} className="heart" style={{color: "red"}}><FavoriteIcon/></div>
+        :
+        <div onClick={handleSave} className="heart" style={{color: "#dcdee6"}}><FavoriteIcon/></div>
+        }
+
         <div className="address">{property.full_address}</div>
         <div className="state">{property.city}, {property.state_code}</div>
         <div className="price">${property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}/month</div>

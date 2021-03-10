@@ -13,9 +13,9 @@ const onLoad = marker => {
   console.log('marker: ', marker)
 }
 
-const Map = ({searchPlace, firstProperty}) => {
+const Map = ({currentSearch, firstProperty}) => {
 
-  let center = searchPlace.lat ? {lat: searchPlace.lat, lng: searchPlace.lng} : 
+  let center = currentSearch.lat ? {lat: currentSearch.lat, lng: currentSearch.lng} : 
               {lat: firstProperty.latitude, lng: firstProperty.longitude}
 
   return (

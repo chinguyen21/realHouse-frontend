@@ -4,6 +4,7 @@ import {Typography, Button, AppBar, Toolbar, Avatar } from '@material-ui/core';
 import styling from './css/Styling'
 import './css/App.css';
 
+
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
 import HomePage from './visual/HomePage';
@@ -17,6 +18,7 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(localStorage.token ? true : false)
   const [searchPlace, setSearchPlace] = useState({})
   const [properties, setProperties] = useState([])
+  const [schools, setSchools] = useState([])
 
   const handleLogout = () => {
     localStorage.clear();
@@ -44,9 +46,17 @@ const App = () => {
       setProperties(response)
     })
   },[])
+    useEffect (() => {
+    fetch("http://localhost:3000/schools", {
+      method: "GET",
+      headers: {"Content-Type": "application/json"}})
+    .then(res => res.json())
+    .then(response => {
+      setSchools(response)
+    })
+  },[])
 
   console.log(user)
-  // console.log(properties)
 
   return (
     <div className={styling().root}>
@@ -56,7 +66,7 @@ const App = () => {
           <AppBar position="static">
             <Toolbar style={{background: "#f2e9e1"}}>
               <Typography variant="h6" className={styling().title} >
-                <Button><Link to= "/" className="appBar">Home</Link></Button>
+                <Button><Link to= "/" className="appBar-home">Home</Link></Button>
               </Typography>
               <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
               <Button><Link to= "/login" className="appBar">Log In</Link></Button>
@@ -67,7 +77,7 @@ const App = () => {
           <AppBar position="static">
             <Toolbar style={{background: "#f2e9e1"}}>
               <Typography variant="h6" className={styling().title} >
-                <Button><Link to= "/" className="appBar">Home</Link></Button>
+                <Button><Link to= "/" className="appBar-home">Home</Link></Button>
               </Typography>
               <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
               <Button style={{textTransform: 'capitalize',color: "#de78a9", fontSize:"17px"}} onClick={handleLogout}>Log Out</Button>
@@ -85,11 +95,11 @@ const App = () => {
           <Route exact path='/signup'>
             <Signup setUser={setUser} setLoggedIn={setLoggedIn}/>
           </Route>
-          <Route exact path='/search-page'>
-            <SearchPage properties={properties} user={user} setUser={setUser} searchPlace={searchPlace}/>
+          <Route path='/search-page'>
+            <SearchPage properties={properties} schools={schools} user={user} setUser={setUser} searchPlace={searchPlace}/>
           </Route>
           <Route exact path='/properties/:propertyId'>
-            <PropertyShow properties={properties} user={user} setUser={setUser}/>
+            <PropertyShow properties={properties} schools={schools} user={user} setUser={setUser}/>
           </Route>
           <Route exact path='/profile'>
             {loggedIn ? <Profile user={user} setUser={setUser}/> : <Redirect to="/"/>}

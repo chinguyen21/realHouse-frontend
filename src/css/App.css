@@ -1,5 +1,8 @@
+/* 
+ Signup-Login
+*/
 .App-page-1 {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,9 +18,36 @@
       -ms-flex-pack: center;
           justify-content: center;
   font-size: 25px;
-  color: white;
+  color: black;
 }
 
+.App-page-1 .text-header {
+  text-align: center;
+  font-size: 50px;
+  color: #de78a9;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.App-page-1 .login-form {
+  width: 35ch;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.App-page-1 .login-form .submit {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.App-page-1 .error {
+  color: red;
+  text-align: center;
+  font-size: 20px;
+  font-family: fantasy;
+}
+
+/* --------------------------------------*/
 /* --------------------------------------*/
 /* Homepage Styling*/
 .App-page {
@@ -36,6 +66,39 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.App-page .about {
+  width: 1200px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  color: #de78a9;
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.App-page .about .about-1 {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.App-page .about .about-2 {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .vcom1 {
@@ -96,7 +159,7 @@
   background-color: #ffffff;
   width: 65%;
   min-height: 35vh;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .vcom2 .first {
@@ -168,19 +231,10 @@
   color: #de78a9;
 }
 
-/* --------------------------------------*/
-/* 
- Signup-Login
-*/
-.error {
-  color: red;
-  text-align: center;
-  font-size: 20px;
-  font-family: fantasy;
-}
-
-.submit {
-  text-align: center;
+.appBar-home {
+  text-transform: none;
+  text-decoration: none;
+  color: #de78a9;
 }
 
 /* --------------------------------------*/
@@ -188,7 +242,7 @@
  SearchBar
 */
 .searchbar {
-  height: 80px;
+  height: 120px;
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -198,11 +252,100 @@
       grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
+.searchbar .search-show {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-grid-column: 1;
+  grid-column: 1;
+}
+
+.searchbar .search-show p {
+  font-size: 15px;
+  color: #de78a9;
+  text-align: center;
+}
+
+.searchbar .search-show h4 {
+  font-size: 30px;
+  text-align: center;
+}
+
 .searchbar .bar {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 2;
+  grid-column: 2 / span 2;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchbar .bar .search-box {
+  width: 350px;
+  height: 40px;
+  border: 1px outset #ce7070;
   -ms-grid-column: 1;
   -ms-grid-column-span: 2;
   grid-column: 1 / span 2;
-  margin: auto;
+}
+
+.searchbar .bar .search-box .search-icon {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.searchbar .bar .search-box .dropdown-menu {
+  border-radius: 20px;
+  position: absolute;
+  background-color: white;
+  width: 350px;
+  top: 200px;
+}
+
+.searchbar .bar .search-box .dropdown-menu .select-destination:hover {
+  color: #de78a9;
+  cursor: pointer;
+}
+
+.searchbar .bar .search-price {
+  min-width: 120px;
+  padding-left: 10px;
+  -ms-grid-column: 3;
+  grid-column: 3;
+}
+
+.searchbar .bar .search-price .search-price-1 {
+  min-width: 100px;
+  height: 70px;
+}
+
+.searchbar .bar .search-beds {
+  -ms-grid-column: 4;
+  grid-column: 4;
+  min-width: 120px;
+  padding-left: 10px;
+}
+
+.searchbar .bar .search-beds .search-beds-1 {
+  min-width: 100px;
+  height: 70px;
+}
+
+.searchbar .bar .search-button {
+  -ms-grid-column: 5;
+  grid-column: 5;
 }
 
 .searchbar .switch-button {
@@ -229,8 +372,8 @@
   grid-column: 1 / span 3;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 7fr 3fr;
-      grid-template-rows: 7fr 3fr;
+  -ms-grid-rows: 7fr 2fr 1fr;
+      grid-template-rows: 7fr 2fr 1fr;
   justify-items: center;
 }
 
@@ -238,6 +381,46 @@
   -ms-grid-row: 2;
   grid-row: 2;
   padding-top: 30px;
+}
+
+.content .houses-container-1 .about {
+  width: 80%;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  color: #de78a9;
+  font-size: 15px;
+  padding-bottom: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content .houses-container-1 .about .about-1 {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.content .houses-container-1 .about .about-2 {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .content .houses-container-2 {
@@ -248,8 +431,8 @@
   margin: auto;
   display: -ms-grid;
   display: grid;
-  -ms-grid-rows: 7fr 3fr;
-      grid-template-rows: 7fr 3fr;
+  -ms-grid-rows: 7fr 2fr 1fr;
+      grid-template-rows: 7fr 2fr 1fr;
   justify-items: center;
 }
 
@@ -257,6 +440,41 @@
   -ms-grid-row: 2;
   grid-row: 2;
   padding-top: 30px;
+}
+
+.content .houses-container-2 .about {
+  width: 80%;
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  color: #de78a9;
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.content .houses-container-2 .about .about-1 {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.content .houses-container-2 .about .about-2 {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .content .map {
@@ -303,8 +521,8 @@
 .houses-container .property-info-2 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
   min-height: 50px;
@@ -386,8 +604,8 @@
   display: grid;
   width: 700px;
   height: 300px;
-  -ms-grid-rows: (1fr)[4];
-      grid-template-rows: repeat(4, 1fr);
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
   margin: auto;
@@ -459,25 +677,162 @@
   grid-row: 1 / span 4;
 }
 
+.houses-container-profile {
+  width: 60%;
+  margin: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.houses-container-profile .property-box {
+  width: 350px;
+  height: 350px;
+  padding: 10px;
+}
+
+.houses-container-profile .property-info-1 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+  font-size: 12px;
+  margin-left: 10px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.houses-container-profile .property-info-2 {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  min-height: 50px;
+  font-size: 15px;
+  justify-items: center;
+  border: 1px outset #ce7070;
+}
+
+.houses-container-profile .property-info-2 .heart {
+  -ms-grid-column: 3;
+  grid-column: 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.houses-container-profile .property-info-2 .heart:hover {
+  cursor: pointer;
+}
+
+.houses-container-profile .property-info-2 .address {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  font-size: 12px;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  margin-left: 25px;
+}
+
+.houses-container-profile .property-info-2 .state {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  font-size: 12px;
+  -ms-grid-column-align: start;
+      justify-self: start;
+  margin-left: 25px;
+}
+
+.houses-container-profile .property-info-2 .price {
+  color: #de78a9;
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 2;
+  grid-column: 4 / span 2;
+  -ms-grid-row: 1;
+  grid-row: 1;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin-right: 10px;
+}
+
+.houses-container-profile .property-info-2 .contact {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 2;
+  grid-column: 4 / span 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  -ms-grid-column-align: end;
+      justify-self: end;
+  margin-right: 10px;
+}
+
 /* 
   Property Show
 */
-.property-show {
-  width: 35%;
+.property-show-page {
+  display: -ms-grid;
+  display: grid;
+  height: 2000px;
   margin: auto;
   padding-top: 150px;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.property-show-page .contact-form {
+  -ms-grid-column: 8;
+  -ms-grid-column-span: 2;
+  grid-column: 8 / span 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 / span 2;
+  height: 500px;
+  margin: 1px;
+  text-align: center;
+}
+
+.property-show {
+  -ms-grid-column: 4;
+  -ms-grid-column-span: 4;
+  grid-column: 4 / span 4;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 4;
+  grid-row: 1 / span 4;
 }
 
 .property-show .property-show-1 {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[5];
-      grid-template-columns: repeat(5, 1fr);
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
   min-height: 60px;
   font-size: 20px;
   justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: auto;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -513,24 +868,13 @@
   margin-left: 25px;
 }
 
-.property-show .property-show-1 .price {
-  color: #de78a9;
-  -ms-grid-column: 4;
-  -ms-grid-column-span: 2;
-  grid-column: 4 / span 2;
-  -ms-grid-row: 1;
-  grid-row: 1;
-  -ms-grid-column-align: end;
-      justify-self: end;
-  margin-right: 10px;
-}
-
 .property-show .property-show-1 .contact {
   -ms-grid-column: 4;
   -ms-grid-column-span: 2;
   grid-column: 4 / span 2;
-  -ms-grid-row: 2;
-  grid-row: 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row: 1 /span 2;
   -ms-grid-column-align: end;
       justify-self: end;
   margin-right: 10px;
@@ -539,24 +883,21 @@
 .property-show .overview {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
+  width: 80%;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
   -ms-grid-rows: 1fr 1fr 1fr;
       grid-template-rows: 1fr 1fr 1fr;
-  min-height: 60px;
   font-size: 20px;
-  margin: auto;
   padding-top: 20px;
   justify-items: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   padding-bottom: 30px;
 }
 
-.features {
+.property-show .features {
   display: -ms-grid;
   display: grid;
+  width: 80%;
   -ms-grid-columns: 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr;
   -ms-grid-rows: 1.5fr 1.5fr 1.5fr 1.5fr;
@@ -568,12 +909,79 @@
   min-height: 550px;
 }
 
-.features p {
+.property-show .features p {
   font-size: 10px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   color: #de78a9;
   margin-left: 14px;
+}
+
+.property-show .nearby-school {
+  padding-bottom: 80px;
+}
+
+.property-show .list-update {
+  display: -ms-grid;
+  display: grid;
+  font-size: 18px;
+  color: #6361d6;
+  font-style: italic;
+  -ms-grid-rows: 1fr 1fr;
+  -ms-grid-columns: 1fr;
+      grid-template: 1fr 1fr / 1fr;
+  justify-items: end;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.property-show .list-update .list-update-1 {
+  -ms-grid-row: 1;
+  grid-row: 1;
+}
+
+.property-show .list-update .list-update-2 {
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
+.property-show .about {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+  color: #de78a9;
+  font-size: 15px;
+  padding-bottom: 20px;
+}
+
+.property-show .about .about-1 {
+  -ms-grid-row: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.property-show .about .about-2 {
+  -ms-grid-row: 3;
+  grid-row: 3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.about-line {
+  background-color: #d8d5d5;
+  width: 100%;
+  height: 1px;
 }
 /*# sourceMappingURL=App.css.map */

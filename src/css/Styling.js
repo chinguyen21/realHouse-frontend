@@ -3,14 +3,21 @@ import { fade, makeStyles } from '@material-ui/core/styles'
 import { red } from '@material-ui/core/colors';
 
 const Styling = () => {
-  const useStyles = makeStyles((theme) => ({
-
+  const useStyles = makeStyles((theme) => ({  
+    paper: {
+      position: 'absolute',
+      width: 400,
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+  },
     gridList: {
-    width: 815,
-    height: 500,
-    transform: 'translateZ(0)',
-     border: '1px solid',
-    borderRadius: "20px"
+      width: 815,
+      height: 500,
+      transform: 'translateZ(0)',
+      border: '1px solid',
+      borderRadius: "20px"
     },
     titleBar1: {
       background:
@@ -40,22 +47,22 @@ const Styling = () => {
     title: {
       flexGrow: 1
     },
-    authForm: {
-      '& > *': {
-        margin: theme.spacing(2),
-        width: '25ch',
-        background: 'linear-gradient(45deg, #686868 50%, #81d4d4 90%)',
-        boxShadow: '0 3px 5px 2px rgba(180, 180, 180, .3)',
-      }
-    },
-    authBox: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '13ch',
-        background: 'linear-gradient(45deg, #686868 50%, #81d4d4 90%)',
-        boxShadow: '0 2px 5px 2px rgba(180, 180, 180, .3)',
-      }
-    },
+    // authForm: {
+    //   '& > *': {
+    //     margin: theme.spacing(2),
+    //     width: '25ch',
+    //     background: 'linear-gradient(45deg, #e08db1 50%, #b59aa6 90%)',
+    //     boxShadow: '0 3px 1px 2px rgba(17, 18, 180, .3)',
+    //   }
+    // },
+    // authBox: {
+    //   '& > *': {
+    //     margin: theme.spacing(1),
+    //     width: '13ch',
+    //     background: 'linear-gradient(45deg, #686868 50%, #81d4d4 90%)',
+    //     boxShadow: '0 2px 5px 2px rgba(180, 180, 180, .3)',
+    //   }
+    // },
     inputRoot: {
       color: 'inherit',
     },

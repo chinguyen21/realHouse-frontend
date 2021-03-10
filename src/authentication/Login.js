@@ -37,8 +37,8 @@ const Login = ({setUser, setLoggedIn}) => {
   return(
     <div className="App-page-1">
         <div className="error">{errors ? errors.map(error => <p>{error}</p>) : null}</div>
-        <div className="auth">LOG IN</div>
-      <form className={Styling().authForm} onSubmit={handleSubmit} >
+        <div className="text-header">LOG IN</div>
+      <form className="login-form" onSubmit={handleSubmit} >
         <TextField
           id="email"
           label="Email"
