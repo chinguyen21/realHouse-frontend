@@ -8,10 +8,11 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, properties, setSearchPlace}) => {
-  // const [location, setLocation] = useState(currentSearch.name)
+const SearchBar = (props) => {
 
-   const {
+  const {setFilterPets, filterPets, searchBeds, setSearchBeds, searchPrice, setSearchPrice, displayMap, setDisplayMap, currentSearch, setCurrentSearch, properties} = props
+  
+  const {
     ready,
     value,
     suggestions: { status, data },
@@ -75,7 +76,7 @@ const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, 
       <div className="search-show">
         <h2>
           <p>{properties.length} properties</p>
-          <h4> {currentSearch.name}</h4>
+          <div> {currentSearch.name}</div>
         </h2>
       </div> : null }
       <div className="bar">
@@ -106,36 +107,52 @@ const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, 
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value=""
+                        value={searchPrice}
                         color="secondary"
-                        // onChange={handleChange}
+                        onChange={e => setSearchPrice(e.target.value)}
                       >
+                        <MenuItem value={"All"}>All</MenuItem>
                         <MenuItem value={1000}>less than 1000</MenuItem>
                         <MenuItem value={2000}>1000-2000</MenuItem>
                         <MenuItem value={3000}>2000-3000</MenuItem>
+                        <MenuItem value={"More than 3000"}>more than 3000</MenuItem>
                       </Select>
                     </FormControl>
                   </div>
                   <div className="search-beds">
                     <FormControl className="search-beds-1">
-                      <InputLabel id="demo-simple-select-label" color="secondary">Beds</InputLabel>
+                      <InputLabel id="demo-simple-select-label" color="secondary">Sqft</InputLabel>
                       <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value=""
+                        value={searchBeds}
                         color="secondary"
-                        // onChange={handleChange}
+                        onChange={(e) => setSearchBeds(e.target.value)}
                       >
-                        <MenuItem value={1}>1</MenuItem>
-                        <MenuItem value={2}>2</MenuItem>
-                        <MenuItem value={3}>3</MenuItem>
+                        <MenuItem value={"All"}>All</MenuItem>
+                        <MenuItem value={"Less than 500"}>Less than 500</MenuItem>
+                        <MenuItem value={500}>500+</MenuItem>
+                        <MenuItem value={600}>600+</MenuItem>
+                        <MenuItem value={700}>700+</MenuItem>
                       </Select>
                     </FormControl>
                   </div>
-                  <div className="search-button">
-                    <Button type="submit" variant="outlined" size="medium" color="secondary" >
-                        Search
-                    </Button>
+                  <div className="search-pets">
+                     <FormControl className="search-pets-1">
+                      <InputLabel id="demo-simple-select-label" color="secondary">Pets</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={filterPets}
+                        color="secondary"
+                        onChange={(e) => setFilterPets(e.target.value)}
+                      >
+                        <MenuItem value={"All"}>All</MenuItem>
+                        <MenuItem value={"Yes"}>Yes</MenuItem>
+                        <MenuItem value={"No"}>No</MenuItem>
+
+                      </Select>
+                    </FormControl>
                   </div>
                 {/* </Toolbar> */}
               {/* </form> */}

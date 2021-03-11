@@ -31,11 +31,11 @@ const Property = ({user, setUser, property, setAskLogin}) => {
   return (
     <div className="property-box">
       <Link to={`/properties/${property.id}`}>
-        <img src = {property.photos[0].src} width="100%" height="70%"></img>
+        {property.photos.length !== 0 ? <img src = {property.photos[0].src} width="100%" height="70%"></img> : <img src = "https://images1.forrent.com/i2/8AL5md_f5Hf_LDE8tBxF-CyHLg1xeqbHoVtjYxl1iig/117/image.jpg" width="100%" height="70%"></img>}
       </Link>
       <div className="property-info-1">
-        <p>Beds: {property.bedrooms[0]}-{property.bedrooms[2]}</p>
-        <p>Baths: {property.bathrooms[0]}-{property.bathrooms[2]}</p>
+        {property.bedroom ? <p>Beds: {property.bedrooms[0]}-{property.bedrooms[2]}</p> : <p>Beds: 1</p>}
+        {property.bathrooms ? <p>Baths: {property.bathrooms[0]}-{property.bathrooms[2]}</p>: <p>Baths: 1</p>}
         <p>{property.sqft ? property.sqft : "500"}+ sqft</p>
         <p>Pets: {property.allow_pets ? "yes" : "no"}</p>
       </div>

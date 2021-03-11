@@ -9,6 +9,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import SendIcon from '@material-ui/icons/Send';
+import MessageIcon from '@material-ui/icons/Message';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import SchoolIcon from '@material-ui/icons/School';
 
@@ -21,12 +22,16 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
 
   const [askLogin, setAskLogin] = useState(false);
   const [showContact, setShowContact] = useState(false)
+  const [name, setName] = useState(user.name)
+  const [email, setEmail] = useState(user.email)
+  const [phone, setPhone] = useState(user.phone_number)
+  const [message, setMessage] = useState("")
+  const [reply, setReply] = useState("")
   // const contactPop = useRef(null)
 
   let match = useRouteMatch();
   let property = properties.find(property => property.id === parseInt(match.params.propertyId))
   
-  console.log(property)
   const distance = (lat,lng) => {
     const R = 6371e3; 
     const a1 = lat * Math.PI/180; 
@@ -84,6 +89,27 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
           })
       }
 
+    const handleSubmit = (e) => {
+      e.preventDefault();
+          fetch(`http://localhost:3000/messages/${property.id}`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+              sender_name: e.target[0].value,
+              sender_email: e.target[1].value,
+              sender_phone: e.target[2].value,
+              message: e.target[3].value
+            })
+          })
+          .then(res => res.json())
+          .then(resp => setReply(resp.reply))
+          e.target.reset()
+    }
+
+    const handleContact = () => {
+      setShowContact(!showContact)
+      setReply("")
+    }
 
   return(
     <div>
@@ -148,7 +174,7 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
             <div className="property-show-1">
               <div className="address">Address: {property.full_address}, {property.city}, {property.state_code}</div>
               <div className="contact">
-                <Button variant="contained" color="secondary" onClick={() => setShowContact(!showContact)}>
+                <Button variant="contained" color="secondary" onClick={handleContact}>
                     Contact Property
                   </Button>
               </div>
@@ -243,36 +269,46 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
                      
         <div className="contact-form"
           >
-          <h4 style={{color: "#418287"}}><PhoneIcon /> {user.id ? property.owner_contact : "Login to see owner contact"}</h4>
-          Contact this property
+          <h3 style={{color: "#418287"}}>{reply}</h3>
           {/* <div className={Styling().margin}> */}
+          {!reply ? 
+          <form onSubmit={handleSubmit}>
+            <h4 style={{color: "#418287"}}><PhoneIcon /> {user.id ? property.owner_contact : "Login to see owner contact"}</h4>
+            <p>Send a message to owner</p>
             <Grid container spacing={2} alignItems="flex-end">
               <Grid item><AccountCircle /></Grid>
-              <Grid item ><TextField id="input-with-icon-grid" label="Name" /></Grid>
+              <Grid item ><TextField id="name" value={name} label="Name" onChange={(e) => setName(e.target.value)}/></Grid>
             </Grid>
             <Grid container spacing={2} alignItems="flex-end">
               <Grid item><EmailIcon /></Grid>
-              <Grid item><TextField id="input-with-icon-grid" label="Email" /></Grid>
+              <Grid item><TextField id="email" value={email}label="Email" onChange={(e) => setEmail(e.target.value)}/></Grid>
             </Grid>
             <Grid container spacing={2} alignItems="flex-end">
               <Grid item><PhoneIcon /></Grid>
-              <Grid item><TextField id="input-with-icon-grid" label="Phone(optional)" /></Grid>
+              <Grid item><TextField id="phone" value={phone}label="Phone(optional)" onChange={(e) => setPhone(e.target.value)}/></Grid>
             </Grid>
-              <p style={{fontSize: "15px"}}>Desire Move-in Date</p>
             <Grid container spacing={2} alignItems="flex-end">
+              <Grid item><MessageIcon /></Grid>
+              <Grid item><TextField id="message" value={message}label="Message" onChange={(e) => setMessage(e.target.value)}/></Grid>
+            </Grid>
+              {/* <p style={{fontSize: "15px"}}>Desire Move-in Date</p> */}
+            {/* <Grid container spacing={2} alignItems="flex-end">
               <Grid item><ScheduleIcon /></Grid>
               <Grid item><Input id="date" type="date" label="date"/></Grid>
-            </Grid>
+            </Grid> */}
             <br/>
             <Button
               variant="contained"
               color="secondary"
+              type="submit"
               endIcon={<SendIcon/>}
+              
             >
               Send
             </Button>
-            
-          {/* </div> */}
+            </form>
+            : null
+            }
         </div>
         : null      
         } 

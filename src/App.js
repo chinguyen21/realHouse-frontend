@@ -66,7 +66,7 @@ const App = () => {
           <AppBar position="static">
             <Toolbar style={{background: "#f2e9e1"}}>
               <Typography variant="h6" className={styling().title} >
-                <Button><Link to= "/" className="appBar-home">Home</Link></Button>
+                <Button><Link to= "/" className="appBar-home">realHome</Link></Button>
               </Typography>
               <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
               <Button><Link to= "/login" className="appBar">Log In</Link></Button>
@@ -77,7 +77,7 @@ const App = () => {
           <AppBar position="static">
             <Toolbar style={{background: "#f2e9e1"}}>
               <Typography variant="h6" className={styling().title} >
-                <Button><Link to= "/" className="appBar-home">Home</Link></Button>
+                <Button><Link to= "/" className="appBar-home">realHome</Link></Button>
               </Typography>
               <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
               <Button style={{textTransform: 'capitalize',color: "#de78a9", fontSize:"17px"}} onClick={handleLogout}>Log Out</Button>

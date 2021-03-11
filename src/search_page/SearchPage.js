@@ -14,6 +14,9 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
   const [page, setPage] = useState(1)
   const [askLogin, setAskLogin] = useState(false);
   const [currentSearch, setCurrentSearch] = useState(searchPlace.lat ? searchPlace : {})
+  const [searchPrice, setSearchPrice] = useState("")
+  const [searchBeds, setSearchBeds] = useState("")
+  const [filterPets, setFilterPets] = useState("")
 
   // let match = useRouteMatch();
   const filterProperties = () => {
@@ -21,6 +24,23 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
     if (currentSearch.lat) {
       fproperties = properties.filter(property => Math.abs(property.latitude-currentSearch.lat) <= 0.05 &&
                                     Math.abs(property.longitude-currentSearch.lng) <= 0.05)}
+    if (searchPrice && searchPrice !== "All" && searchPrice !== "More than 3000") {
+      fproperties = fproperties.filter(property => parseInt(property.price.split(" ")[0]) > searchPrice - 1000 && parseInt(property.price.split(" ")[0]) <= searchPrice)
+    } else if (searchPrice === "More than 3000") {
+      fproperties = fproperties.filter(property => parseInt(property.price.split(" ")[0]) > 3000)
+    }
+    if (searchBeds === "Less than 500") {
+         fproperties = fproperties.filter(property => property.sqft < 500)
+        } else if (searchBeds && searchBeds !== "All") {
+         fproperties = fproperties.filter(property => property.sqft > searchBeds)
+    }
+
+    if (filterPets === "Yes") {
+      fproperties = fproperties.filter(property => property.allow_pets )
+    } else if (filterPets === "No") {
+      fproperties = fproperties.filter(property => !property.allow_pets )
+    }
+
     return fproperties
   }
 
@@ -29,12 +49,12 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
   };
 
 
-
+  console.log(searchBeds)
   return (
     <div>
       <PopupModal askLogin={askLogin} setAskLogin={setAskLogin}/>
       <div >
-        <SearchBar properties={filterProperties()} currentSearch={currentSearch} setCurrentSearch={setCurrentSearch} displayMap={displayMap} setDisplayMap={setDisplayMap}/>
+        <SearchBar filterPets={filterPets} setFilterPets={setFilterPets}searchBeds={searchBeds} setSearchBeds={setSearchBeds} searchPrice={searchPrice} setSearchPrice={setSearchPrice} properties={filterProperties()} currentSearch={currentSearch} setCurrentSearch={setCurrentSearch} displayMap={displayMap} setDisplayMap={setDisplayMap}/>
       </div>
       {displayMap ? 
         <div className="content">
@@ -47,7 +67,7 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
             <About/>
           </div>
           <div className="map">
-            <Map currentSearch={currentSearch} firstProperty={properties[0]}/>
+            <Map properties={filterProperties().slice((page - 1)*9, page*9)} currentSearch={currentSearch} firstProperty={properties[0]}/>
           </div> 
           
       </div>
