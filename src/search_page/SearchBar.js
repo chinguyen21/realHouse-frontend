@@ -8,7 +8,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, properties}) => {
+const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, properties, setSearchPlace}) => {
   // const [location, setLocation] = useState(currentSearch.name)
 
    const {
@@ -38,6 +38,11 @@ const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, 
           lat: lat,
           lng: lng
         })
+        // setSearchPlace({
+        //   name: description,
+        //   lat: lat,
+        //   lng: lng
+        // })
       })
       .catch((error) => {
         console.log("Error: ", error);
@@ -66,12 +71,13 @@ const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, 
   
   return(
     <div className="searchbar">
+      {currentSearch.name ? 
       <div className="search-show">
         <h2>
-          <p>{properties.length} properties near</p>
-          <h4>{currentSearch.name}</h4>
+          <p>{properties.length} properties</p>
+          <h4> {currentSearch.name}</h4>
         </h2>
-      </div>
+      </div> : null }
       <div className="bar">
           {/* <form > */}
               {/* <Toolbar> */}
@@ -104,9 +110,9 @@ const SearchBar = ({displayMap, setDisplayMap, currentSearch, setCurrentSearch, 
                         color="secondary"
                         // onChange={handleChange}
                       >
-                        <MenuItem value={1000}>1000</MenuItem>
-                        <MenuItem value={2000}>2000</MenuItem>
-                        <MenuItem value={3000}>3000</MenuItem>
+                        <MenuItem value={1000}>less than 1000</MenuItem>
+                        <MenuItem value={2000}>1000-2000</MenuItem>
+                        <MenuItem value={3000}>2000-3000</MenuItem>
                       </Select>
                     </FormControl>
                   </div>

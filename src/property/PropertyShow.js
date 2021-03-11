@@ -25,7 +25,8 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
 
   let match = useRouteMatch();
   let property = properties.find(property => property.id === parseInt(match.params.propertyId))
-
+  
+  console.log(property)
   const distance = (lat,lng) => {
     const R = 6371e3; 
     const a1 = lat * Math.PI/180; 
@@ -75,7 +76,8 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
     const handleRemove = () => {
            fetch(`http://localhost:3000/fproperties/${property.id}`, {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"}})
+            headers: {"Content-Type": "application/json",
+                  "Authorization": `Bearer ${localStorage.token}`}})
           .then(res => res.json())
           .then(() => {
             setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== property.id)})
@@ -209,7 +211,7 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
           </div>
 
         <div className="list-update">
-          <p className="list-update-1">Listing Date: {changeDate(property.list_date.split("T")[0])}</p>
+          <p className="list-update-1">Listing Date: {property.list_date ? changeDate(property.list_date.split("T")[0]) : "NaN"}</p>
           <p className="list-update-2">Last Update: {changeDate(property.last_update.split("T")[0])}</p>
         </div>
          <h2><SchoolIcon/> NEARBY SCHOOL</h2>

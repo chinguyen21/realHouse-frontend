@@ -20,7 +20,8 @@ const Property = ({user, setUser, property, setAskLogin}) => {
     const handleRemove = () => {
            fetch(`http://localhost:3000/fproperties/${property.id}`, {
             method: "DELETE",
-            headers: {"Content-Type": "application/json"}})
+            headers: {"Content-Type": "application/json",
+                  "Authorization": `Bearer ${localStorage.token}`}})
           .then(res => res.json())
           .then(() => {
             setUser({...user, saved_properties: user.saved_properties.filter(p => p.id !== property.id)})
