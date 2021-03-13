@@ -28,9 +28,8 @@ const Map = ({currentSearch, firstProperty, properties}) => {
         {<GoogleMap
           mapContainerStyle={containerStyle}
           center={center}
-          zoom={11} 
+          zoom={13} 
         >
-          { /* Child components, such as markers, info windows, etc. */ }
           {properties.map(property =>  (
             <Marker onClick={() => setPosition({lat: property.latitude, lng: property.longitude})}
             onLoad={onLoad}
@@ -38,19 +37,8 @@ const Map = ({currentSearch, firstProperty, properties}) => {
             >
             </Marker>
           ) )} 
-             {/* {s &&
-                 (<InfoWindow 
-                 position={s}
-                 clickable={true}
-                  onCloseClick={() => setPosition({})}
-                 >
-                     <h1>My InfoWindow</h1>
-                 </InfoWindow>)
-             }
-             */}
-      
- 
-            
+
+             
         </GoogleMap>}
 
     </div>

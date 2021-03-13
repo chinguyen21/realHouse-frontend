@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect} from 'react-router-dom';
 import {Typography, Button, AppBar, Toolbar, Avatar } from '@material-ui/core';
 import styling from './css/Styling'
 import './css/App.css';
@@ -7,7 +7,7 @@ import './css/App.css';
 
 import Login from './authentication/Login';
 import Signup from './authentication/Signup';
-import HomePage from './visual/HomePage';
+import HomePage from './homepage/HomePage';
 import SearchPage from './search_page/SearchPage';
 import Profile from './authentication/Profile';
 import PropertyShow from './property/PropertyShow';
@@ -24,7 +24,6 @@ const App = () => {
     localStorage.clear();
     setUser({});
     setLoggedIn(false);
-    // history.push("/")
     <Redirect to="/"/>
   }
 
@@ -68,7 +67,7 @@ const App = () => {
               <Typography variant="h6" className={styling().title} >
                 <Button><Link to= "/" className="appBar-home">realHome</Link></Button>
               </Typography>
-              <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
+              {/* <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button> */}
               <Button><Link to= "/login" className="appBar">Log In</Link></Button>
               <Button><Link to= "/signup" className="appBar">Sign Up</Link></Button>
             </Toolbar>
@@ -79,7 +78,7 @@ const App = () => {
               <Typography variant="h6" className={styling().title} >
                 <Button><Link to= "/" className="appBar-home">realHome</Link></Button>
               </Typography>
-              <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button>
+              {/* <Button><Link to= "/search-page" className="appBar">All Properties</Link></Button> */}
               <Button style={{textTransform: 'capitalize',color: "#de78a9", fontSize:"17px"}} onClick={handleLogout}>Log Out</Button>
               <Link style={{textDecoration: "none"}}to="/profile"><Avatar>{user.name!==undefined ? user.name.slice(0,1) : null}</Avatar></Link>
             </Toolbar>

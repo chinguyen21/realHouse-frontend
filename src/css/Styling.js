@@ -6,11 +6,16 @@ const Styling = () => {
   const useStyles = makeStyles((theme) => ({  
     paper: {
       position: 'absolute',
-      width: 400,
+      width: 450,
+      height: 100,
       backgroundColor: theme.palette.background.paper,
       border: '2px solid #000',
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
+      display: 'flex',
+      justifyContent: 'space-around',
+      alignItems: 'center',
+      borderRadius: "20px"
   },
     gridList: {
       width: 815,

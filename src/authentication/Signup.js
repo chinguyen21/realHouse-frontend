@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useHistory} from "react-router-dom"
 import {TextField, Button} from "@material-ui/core"
-import Styling from '../css/Styling'
 
 const Signup = ({setUser, setLoggedIn}) => {
 
@@ -31,7 +30,7 @@ const Signup = ({setUser, setLoggedIn}) => {
           setUser(response.user)
           setLoggedIn(true)
           localStorage.token = response.token
-          history.push("/");
+          history.goBack();
         } else {
           setErrors(response.message)
         }
@@ -41,11 +40,13 @@ const Signup = ({setUser, setLoggedIn}) => {
   return(
     <div>
        <header className="App-page-1">
+         <div className='picture'>
         <div className="error">{errors ? errors.map(error => <p>{error}</p>) : null}</div>
         <div className="text-header">SIGN UP</div>
         
       <form className="login-form" onSubmit={handleSubmit}>
         <TextField
+          className="text-field"
           id="email"
           label="Email"
           variant="filled"
@@ -55,6 +56,7 @@ const Signup = ({setUser, setLoggedIn}) => {
         />
         <br/>
         <TextField
+          className="text-field"
           id="password"
           label="Password"
           variant="filled"
@@ -64,6 +66,7 @@ const Signup = ({setUser, setLoggedIn}) => {
           />
         <br/>
         <TextField
+          className="text-field"
           id="password_confirmation"
           label="Password Confirmation"
           variant="filled"
@@ -73,6 +76,7 @@ const Signup = ({setUser, setLoggedIn}) => {
           />
           <br/>
         <TextField
+          className="text-field"
           id="name"
           label="Name"
           variant="filled"
@@ -82,6 +86,7 @@ const Signup = ({setUser, setLoggedIn}) => {
           />
           <br/>
         <TextField
+          className="text-field"
           id="phone"
           label="Phone Number"
           variant="filled"
@@ -92,11 +97,12 @@ const Signup = ({setUser, setLoggedIn}) => {
           <br/>
 
           <div className='submit'>
-          <Button type='submit' variant="outlined" color="default">
+          <Button type='submit' variant="contained" color="secondary">
             SIGN UP
           </Button>
         </div>
         </form>
+        </div>
       </header>
     </div>
   )

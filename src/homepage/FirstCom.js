@@ -9,8 +9,6 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import useOnclickOutside from "react-cool-onclickoutside";
-
 
 const FirstCom = ({setSearchPlace}) => {
 
@@ -24,7 +22,6 @@ const FirstCom = ({setSearchPlace}) => {
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      /* Define search scope here */
     },
     debounce: 300,
   });
@@ -34,11 +31,10 @@ const FirstCom = ({setSearchPlace}) => {
   };
 
    const handleSelect = ({ description }) => () => {
-    // When user selects a place, we can replace the keyword without request data from API
-    // by setting the second parameter as "false"
+
     setValue(description, false);
     clearSuggestions();
-    // Get latitude and longitude via utility functions
+
     getGeocode({ address: description })
     .then((results) => getLatLng(results[0]))
     .then(({ lat, lng }) => {
@@ -63,10 +59,10 @@ const FirstCom = ({setSearchPlace}) => {
         id,
         structured_formatting: { main_text, secondary_text },
       } = suggestion;
-      // debugger
+
       return (
         <p role="option" aria-selected="false" key={id} onClick={handleSelect(suggestion)} className="select-destination">
-         <img src="https://img.icons8.com/ios/18/fa314a/google-maps-new--v1.png"/>
+         <img src="https://img.icons8.com/ios/18/fa314a/google-maps-new--v1.png" alt=""/>
           <strong>   {main_text}</strong> <small>{secondary_text}</small>
         </p>
       );
@@ -99,7 +95,7 @@ const FirstCom = ({setSearchPlace}) => {
                    
           <div className='picture'>
           </div>
-          <h2>Find your real HOME</h2>
+          <h2>Find your real HOME, we can help</h2>
     </div>
   )
 }

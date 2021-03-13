@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 import SearchBar from './SearchBar';
-import { useRouteMatch } from 'react-router-dom';
 import Map from './Map';
 import Property from '../property/Property';
 import Pagination from '@material-ui/lab/Pagination';
@@ -18,7 +17,6 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
   const [searchBeds, setSearchBeds] = useState("")
   const [filterPets, setFilterPets] = useState("")
 
-  // let match = useRouteMatch();
   const filterProperties = () => {
     let fproperties = properties;
     if (currentSearch.lat) {

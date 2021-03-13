@@ -1,9 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {Button, TextField } from '@material-ui/core';
+import React, {useState} from 'react';
+import {Button } from '@material-ui/core';
 import Property from '../property/Property'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
+import { Table, TableHead, TableRow, TableCell, TableBody, TextField} from '@material-ui/core';
+
 
 const Profile = ({user, setUser}) => {
   const [showEditForm, setShowEditForm] = useState(false)
@@ -30,6 +32,17 @@ const Profile = ({user, setUser}) => {
       setShowEditForm(false)
     })
     }
+
+    const style={
+      background:"#ebe6e6",
+      font:"20px",
+      color: "#de78a9"
+    }
+
+    const changeDate = (date) => {
+      const mydate = new Date(date);
+      return mydate.toDateString();
+  }
 
   return(
     <div>
@@ -98,7 +111,28 @@ const Profile = ({user, setUser}) => {
         </div>
         <div className="profile-messages">
               <h2 style={{textAlign: 'center', paddingTop: "50px"}}>MESSAGES</h2>
-
+                <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center"style={style}>Date</TableCell>
+                  <TableCell align="center"style={style}>Message</TableCell>
+                  <TableCell align="center"style={style}>Name</TableCell>
+                  <TableCell align="center"style={style}>Email</TableCell>
+                  <TableCell align="center"style={style}>Phone Number</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {user.messages.map(message => (
+                  <TableRow >
+                    <TableCell align="center">{changeDate(message.created_at)}</TableCell>
+                    <TableCell align="center">{message.message}</TableCell>
+                    <TableCell align="center">{message.sender_name}</TableCell>
+                    <TableCell align="center">{message.sender_email}</TableCell>
+                    <TableCell align="center">{message.sender_phone}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
         </div>
     </div>
         <h2 style={{textAlign: 'center'}}>SAVED PROPERTIES</h2>

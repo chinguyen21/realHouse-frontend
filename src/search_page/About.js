@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';

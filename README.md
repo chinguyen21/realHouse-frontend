@@ -1,70 +1,52 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# realHome App (React / Rails API Application)
 
-## Available Scripts
+* Here is the Frontend repo of this app. Link to [Backend Repo](https://github.com/chinguyen21/realHouse-backend)
 
-In the project directory, you can run:
+A tracker calories application inspired by my personal need. It was made with React for frontend and Rails API for backend
 
-### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## TOOL
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `yarn test`
+1. React Hook
+2. Ruby
+3. Rails API
+4. Javascript
+5. Google Map Javascript API
+6. Google Place Autocomplete API
+7. PostgreSQL
+8. Bcrypt + JSON Token
+9. Material UI
+10. CSS
+  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## INTRUCTIONS
 
-### `yarn build`
+1. Clone this repository
+2. Using the terminal navigate to the root directory
+3. Run "Bundle Install", then "rails server" from backend directory
+4. Run "npm install", then "npm start" from frontend directory
+5. I hide my API key in my development environment. If you want to seed data, please get a new API key from this [site](https://rapidapi.com/apidojo/api/realtor/details) to able to create properties.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## FEATURES
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Without sign up or log in, users still can see all the updated apartments with very detailed information
+* When sign up or log in successfully, users can save the properties and view them later. User also can remove the saved properties.
+* Users can search locaton where they want to see the listing apartments with suggesting nearby location from Google Place Autocomplete API.
+* Users can see detailed information of each property like the price per month, the number of bedrooms, bathrooms, the sqrt, the built-year, all features of that house and nearby schools of that property.
+* Users can search properties by price, by sqft, and by pet allowing
+* Users can edit their account information
+* User can contact the property owner by the given phone number or send them a message through the built-in function
+* If a user is the owner of a property, they can see all the messages people leave to them when they log in
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## PREVIEW
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![](preview1.png)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![](preview2.png)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Built by Chi Nguyen
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

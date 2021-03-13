@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Switch } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-import {InputBase, Button, Toolbar, InputLabel, Select, MenuItem, FormControl} from "@material-ui/core"
+import {InputBase, InputLabel, Select, MenuItem, FormControl} from "@material-ui/core"
 import Styling from '../css/Styling'
 import usePlacesAutocomplete, {
   getGeocode,
@@ -13,24 +13,22 @@ const SearchBar = (props) => {
   const {setFilterPets, filterPets, searchBeds, setSearchBeds, searchPrice, setSearchPrice, displayMap, setDisplayMap, currentSearch, setCurrentSearch, properties} = props
   
   const {
-    ready,
     value,
     suggestions: { status, data },
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({
     requestOptions: {
-      /* Define search scope here */
+
     },
     debounce: 300,
   });
 
    const handleSelect = ({ description }) => () => {
-    // When user selects a place, we can replace the keyword without request data from API
-    // by setting the second parameter as "false"
+
     setValue(description, false);
     clearSuggestions();
-    // Get latitude and longitude via utility functions
+
     getGeocode({ address: description })
     .then((results) => getLatLng(results[0]))
     .then(({ lat, lng }) => {
@@ -39,19 +37,12 @@ const SearchBar = (props) => {
           lat: lat,
           lng: lng
         })
-        // setSearchPlace({
-        //   name: description,
-        //   lat: lat,
-        //   lng: lng
-        // })
+
       })
       .catch((error) => {
         console.log("Error: ", error);
       });
 
-    // setTimeout(function() {
-    //   history.push(`/search-page`);
-    // }, 1000);
   };
 
   const renderSuggestions = () =>
@@ -60,10 +51,10 @@ const SearchBar = (props) => {
         id,
         structured_formatting: { main_text, secondary_text },
       } = suggestion;
-      // debugger
+
       return (
         <p role="option" aria-selected="false" key={id} onClick={handleSelect(suggestion)} className="select-destination">
-         <img src="https://img.icons8.com/ios/18/fa314a/google-maps-new--v1.png"/>
+         <img src="https://img.icons8.com/ios/18/fa314a/google-maps-new--v1.png" alt=""/>
           <strong>   {main_text}</strong> <small>{secondary_text}</small>
         </p>
       );
@@ -80,8 +71,7 @@ const SearchBar = (props) => {
         </h2>
       </div> : null }
       <div className="bar">
-          {/* <form > */}
-              {/* <Toolbar> */}
+
                   <div className="search-box">
                     <div className="search-icon">
                       <SearchIcon />
@@ -112,10 +102,10 @@ const SearchBar = (props) => {
                         onChange={e => setSearchPrice(e.target.value)}
                       >
                         <MenuItem value={"All"}>All</MenuItem>
-                        <MenuItem value={1000}>less than 1000</MenuItem>
-                        <MenuItem value={2000}>1000-2000</MenuItem>
-                        <MenuItem value={3000}>2000-3000</MenuItem>
-                        <MenuItem value={"More than 3000"}>more than 3000</MenuItem>
+                        <MenuItem value={1000}>less than $1000</MenuItem>
+                        <MenuItem value={2000}>$1000-$2000</MenuItem>
+                        <MenuItem value={3000}>$2000-$3000</MenuItem>
+                        <MenuItem value={"More than 3000"}>more than $3000</MenuItem>
                       </Select>
                     </FormControl>
                   </div>
@@ -154,8 +144,7 @@ const SearchBar = (props) => {
                       </Select>
                     </FormControl>
                   </div>
-                {/* </Toolbar> */}
-              {/* </form> */}
+
       </div>
 
       <div className="switch-button">

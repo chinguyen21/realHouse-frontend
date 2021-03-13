@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
+
 const Property = ({user, setUser, property, setAskLogin}) => {
 
   const handleSave = () => {
@@ -31,7 +32,7 @@ const Property = ({user, setUser, property, setAskLogin}) => {
   return (
     <div className="property-box">
       <Link to={`/properties/${property.id}`}>
-        {property.photos.length !== 0 ? <img src = {property.photos[0].src} width="100%" height="70%"></img> : <img src = "https://images1.forrent.com/i2/8AL5md_f5Hf_LDE8tBxF-CyHLg1xeqbHoVtjYxl1iig/117/image.jpg" width="100%" height="70%"></img>}
+        {property.photos.length !== 0 ? <img src = {property.photos[0].src} alt="" width="100%" height="70%"></img> : <img src = "https://images1.forrent.com/i2/8AL5md_f5Hf_LDE8tBxF-CyHLg1xeqbHoVtjYxl1iig/117/image.jpg" alt="" width="100%" height="70%"></img>}
       </Link>
       <div className="property-info-1">
         {property.bedroom ? <p>Beds: {property.bedrooms[0]}-{property.bedrooms[2]}</p> : <p>Beds: 1</p>}
@@ -53,7 +54,14 @@ const Property = ({user, setUser, property, setAskLogin}) => {
         <div className="address">{property.full_address}</div>
         <div className="state">{property.city}, {property.state_code}</div>
         <div className="price">${property.price.includes(" ") ? <span>{property.price.split(" ")[0]}+</span> : property.price}/month</div>
+        {user.id ? 
         <div className="contact">{property.owner_contact}</div>
+        : 
+        <div className="contact">
+          <button onClick={() => setAskLogin(true)}>Contact</button>
+        </div>
+        
+        }
       </div>
     </div>
   )

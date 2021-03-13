@@ -1,16 +1,15 @@
-import React, {useState, useRef} from 'react';
+import React, {useState} from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import HouseIcon from '@material-ui/icons/House';
 import GavelIcon from '@material-ui/icons/Gavel';
 import { Table, TableHead, TableRow, TableCell, TableBody, TextField} from '@material-ui/core';
-import {Grid, GridList, GridListTile, GridListTileBar, IconButton, Button, Input } from '@material-ui/core';
+import {Grid, GridList, GridListTile, GridListTileBar, IconButton, Button } from '@material-ui/core';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIcon from '@material-ui/icons/Phone';
 import SendIcon from '@material-ui/icons/Send';
 import MessageIcon from '@material-ui/icons/Message';
-import ScheduleIcon from '@material-ui/icons/Schedule';
 import SchoolIcon from '@material-ui/icons/School';
 
 import Styling from '../css/Styling'
@@ -198,8 +197,8 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
                   <TableCell align="center">{property.sqft ? property.sqft : "500"}+ sqft</TableCell>
                   <TableCell align="center">{property.bedrooms[0]}-{property.bedrooms[2]}</TableCell>
                   <TableCell align="center">{property.bathrooms[0]}-{property.bathrooms[2]}</TableCell>
-                  <TableCell align="center">April 4</TableCell>
-                  <TableCell align="center">12 months</TableCell>
+                  <TableCell align="center">{property.move_date}</TableCell>
+                  <TableCell align="center">{property.lease_length} months</TableCell>
                 </TableRow>
             </TableBody>
           </Table>
@@ -218,29 +217,29 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
           <h2>Features</h2>
           <div className="features">
 
-            <div><img src="https://img.icons8.com/nolan/64/school.png"/><p>School</p></div>
-            {property.refrigerator ? <div><img src="https://img.icons8.com/nolan/48/fridge.png"/><p>Refrigerator</p></div> : null}
-            <div><img src="https://img.icons8.com/fluent/48/000000/bath.png"/><p>Baths</p></div>
-            <div><img src="https://img.icons8.com/nolan/48/bed.png"/><p>Beds</p></div>
-            {property.balcony ?<div><img src="https://img.icons8.com/nolan/48/balcony.png"/><p>Balcony</p></div>: null}
-            {property.heating ?<div><img src="https://img.icons8.com/ultraviolet/48/000000/heating-room.png"/><p>Heating</p></div>: null}
-            {property.washer ?<div><img src="https://img.icons8.com/nolan/48/washing-machine.png"/><p>Washer</p></div>: null}
-            {property.elevator ?<div><img src="https://img.icons8.com/ultraviolet/48/000000/elevator.png"/><p>Elevator</p></div>: null}
-            {property.parking ?<div><img src="https://img.icons8.com/nolan/48/parking.png"/><p>Parking</p></div>: null}
-            {property.fitness ?<div><img src="https://img.icons8.com/color/48/000000/strength.png"/><p>Fitness Center</p></div>: null}
-            {property.dishwasher ?<div><img src="https://img.icons8.com/nolan/48/dishwasher.png"/><p>Dishwasher</p></div>: null}
-            {property.wheelchair ?<div><img src="https://img.icons8.com/cute-clipart/48/000000/wheelchair.png"/><p >Wheelchair accessibility</p></div>: null}
-            {property.camera ?<div><img src="https://img.icons8.com/nolan/48/wallmount-camera.png"/><p>Camera</p></div>: null}
-            {property.digital_lock ?<div><img src="https://img.icons8.com/nolan/48/keyhole-shield.png"/><p>Pwd Lock</p></div>: null}
-            {property.allow_pets === "yes" ?<div><img src="https://img.icons8.com/nolan/48/cat.png"/><p>Cat</p></div>: null}
-            {property.allow_pets === "yes" ?<div><img src="https://img.icons8.com/nolan/48/dog.png"/><p>Dog</p></div>: null}
+            <div><img src="https://img.icons8.com/nolan/64/school.png" alt=""/><p>School</p></div>
+            {property.refrigerator ? <div><img src="https://img.icons8.com/nolan/48/fridge.png" alt="" /><p>Refrigerator</p></div> : null}
+            <div><img src="https://img.icons8.com/fluent/48/000000/bath.png" alt=""/><p>Baths</p></div>
+            <div><img src="https://img.icons8.com/nolan/48/bed.png" alt=""/><p>Beds</p></div>
+            {property.balcony ?<div><img src="https://img.icons8.com/nolan/48/balcony.png" alt=""/><p>Balcony</p></div>: null}
+            {property.heating ?<div><img src="https://img.icons8.com/ultraviolet/48/000000/heating-room.png" alt=""/><p>Heating</p></div>: null}
+            {property.washer ?<div><img src="https://img.icons8.com/nolan/48/washing-machine.png" alt=""/><p>Washer</p></div>: null}
+            {property.elevator ?<div><img src="https://img.icons8.com/ultraviolet/48/000000/elevator.png" alt=""/><p>Elevator</p></div>: null}
+            {property.parking ?<div><img src="https://img.icons8.com/nolan/48/parking.png" alt=""/><p>Parking</p></div>: null}
+            {property.fitness ?<div><img src="https://img.icons8.com/color/48/000000/strength.png" alt=""/><p>Fitness Center</p></div>: null}
+            {property.dishwasher ?<div><img src="https://img.icons8.com/nolan/48/dishwasher.png"alt="" /><p>Dishwasher</p></div>: null}
+            {property.wheelchair ?<div><img src="https://img.icons8.com/cute-clipart/48/000000/wheelchair.png"alt=""/><p >Wheelchair accessibility</p></div>: null}
+            {property.camera ?<div><img src="https://img.icons8.com/nolan/48/wallmount-camera.png"alt=""/><p>Camera</p></div>: null}
+            {property.digital_lock ?<div><img src="https://img.icons8.com/nolan/48/keyhole-shield.png"alt=""/><p>Pwd Lock</p></div>: null}
+            {property.allow_pets === "yes" ?<div><img src="https://img.icons8.com/nolan/48/cat.png"alt=""/><p>Cat</p></div>: null}
+            {property.allow_pets === "yes" ?<div><img src="https://img.icons8.com/nolan/48/dog.png"alt=""/><p>Dog</p></div>: null}
           </div>
 
         <div className="list-update">
           <p className="list-update-1">Listing Date: {property.list_date ? changeDate(property.list_date.split("T")[0]) : "NaN"}</p>
           <p className="list-update-2">Last Update: {changeDate(property.last_update.split("T")[0])}</p>
         </div>
-         <h2><SchoolIcon/> NEARBY SCHOOL</h2>
+         <h2><SchoolIcon/> NEARBY SCHOOLS</h2>
           <div className="nearby-school">
             <Table aria-label="simple table">
               <TableHead>
@@ -291,11 +290,6 @@ const PropertyShow = ({properties, user, setUser, schools}) => {
               <Grid item><MessageIcon /></Grid>
               <Grid item><TextField id="message" value={message}label="Message" onChange={(e) => setMessage(e.target.value)}/></Grid>
             </Grid>
-              {/* <p style={{fontSize: "15px"}}>Desire Move-in Date</p> */}
-            {/* <Grid container spacing={2} alignItems="flex-end">
-              <Grid item><ScheduleIcon /></Grid>
-              <Grid item><Input id="date" type="date" label="date"/></Grid>
-            </Grid> */}
             <br/>
             <Button
               variant="contained"
