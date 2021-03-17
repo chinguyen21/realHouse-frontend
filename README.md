@@ -3,7 +3,7 @@
 
 * Here is the Frontend repo of this app. Link to [Backend Repo](https://github.com/chinguyen21/realHouse-backend)
 
-A tracker calories application inspired by my personal need. It was made with React for frontend and Rails API for backend
+An app that helps people find the best place to live with real updated apartments. It was made with React Hook for frontend and Rails API for backend.
 
 
 ## TOOL
