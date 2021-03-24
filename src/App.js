@@ -13,7 +13,7 @@ import Profile from './authentication/Profile';
 import PropertyShow from './property/PropertyShow';
 
 const App = () => {
-  // let history = useHistory();
+
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(localStorage.token ? true : false)
   const [searchPlace, setSearchPlace] = useState({})
@@ -55,7 +55,6 @@ const App = () => {
     })
   },[])
 
-  console.log(user)
 
   return (
     <div className={styling().root}>

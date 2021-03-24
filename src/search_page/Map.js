@@ -10,7 +10,6 @@ const containerStyle = {
 };
 
 const onLoad = marker => {
-  console.log('marker: ', marker)
 }
 
 
@@ -21,7 +20,6 @@ const Map = ({currentSearch, firstProperty, properties}) => {
   let center = currentSearch.lat ? {lat: currentSearch.lat, lng: currentSearch.lng} : 
               {lat: firstProperty.latitude, lng: firstProperty.longitude}
   
-  console.log(s)
   return (
     <div>
 

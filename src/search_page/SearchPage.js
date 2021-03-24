@@ -46,8 +46,6 @@ const SearchPage = ({user, setUser, searchPlace, properties}) => {
      setPage(value);
   };
 
-
-  console.log(searchBeds)
   return (
     <div>
       <PopupModal askLogin={askLogin} setAskLogin={setAskLogin}/>
