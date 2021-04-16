@@ -51,9 +51,7 @@ An app that helps people find the best place to live with real updated apartment
 
 
 
-## PREVIEW
-
-[DEMO](https://real-home-app.netlify.app/)
+## [DEMO](https://real-home-app.netlify.app/)
 
 ### Built by Chi Nguyen
 
